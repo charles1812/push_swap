@@ -24,30 +24,28 @@ int	ft_check(struct list *list)
 	return (1);
 }
 
-void	ft_real_value(struct list *list)
+int	ft_real_value(argv, char	c)
 {
 	int	i;
 	int	j;
-	int	tmp;
+	//int	tmp;
 	int	res;
+	//int	test;
 
 	i = 0;
-	while(i <= list->len)
+	//test = 0;
+	//tmp = list->pA[i];
+	j = 0;
+	res = 0;
+	//printf("%d\n", list->pA[i]);
+	while(j <= list->len)
 	{
-		tmp = list->pA[i];
-		j = 0;
-		res = 0;
-		//printf("%d\n", list->pA[i]);
-		while(j <= list->len)
-		{
-			if (list->pA[i] < list->pA[j])
-				res += 1;
-			j++;
-		}
-		list->pA[i] = list->len - res;
-		printf("%d\n\n", list->pA[i]);
-		i++;
+		if (ft_atoi(c) < ft_atoi(list->pA[j]))
+			res += 1;
+		j++;
 	}
+	res = list->len - res;	
+	return (res);
 }
 
 void    ft_impile(int argc, char **argv, struct list *list)
@@ -64,7 +62,7 @@ void    ft_impile(int argc, char **argv, struct list *list)
         list->pB = malloc(sizeof(int) * list->len);
         while(i < argc)
         {
-                list->pA[i - 1] = ft_atoi(argv[i]);
+                list->pA[i - 1] = ft_real_value(list->pA[i));
                 i++;
         }
         list->A = &list->pA[0];
@@ -75,7 +73,7 @@ int	main(int argc,char **argv)
 {
 	int		i;
 	char		*success;
-	const int	error;
+	//const int	error;
 	struct	list *list = malloc(sizeof(struct list));
 
 	i = 0;
@@ -90,7 +88,7 @@ int	main(int argc,char **argv)
 	{
 		ft_impile(argc, argv, list);
 		if (ft_check(list) == 0)
-			return (error);
+			return (0);
 		ft_real_value(list);
 		ft_rotateA(list);
 		ft_rev_rotateA(list);
@@ -100,7 +98,7 @@ int	main(int argc,char **argv)
                         printf("%d\n", list->pA[i]);
                         i++;
                 }
-		printf("\n\n%d\n", ft_check(list));
+		//printf("\n\n%d\n", ft_check(list));
 		//printf("%d", list->iB);
 		// printf("\n\n%d\n", list->lenB);
               //  printf("%d", list->iB);
