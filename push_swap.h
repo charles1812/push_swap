@@ -31,6 +31,8 @@ void    ft_ss(struct list *list);
 void    ft_rotateA(struct list *list);
 void    ft_rotateB(struct list *list);
 void    ft_rr(struct list *list);
+void    ft_rev_rotateA(struct list *list);
+void    ft_rev_rotateB(struct list *list);
 
 
 int	ft_atoi(const char *str);

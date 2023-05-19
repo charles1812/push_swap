@@ -3,38 +3,29 @@
 void    ft_rev_rotateA(struct list *list)
 {
 	int     i;
-	int     tmp;
-	int	tmp2;
-	int	save;
+	int     save;
 
-	i = list->lenA - 1;
+	i = 0;
 	save = list->pA[0];
-	tmp = list->pA[i];
-	list->pA[i] = list->pA[i + 1];
-	i--;
-	while (i > 0 && list->pA[i] != save)
-	{
-		tmp2 = list->pA[i];
+        while (i < list->iA)
+        {
 		list->pA[i] = list->pA[i + 1];
-		tmp = tmp2;
-		i--;
-	}
-	list->pA[list->lenA] = save;
+		i++;
+        }
+        list->pA[list->iA] = save;
 }
 
 void    ft_rev_rotateB(struct list *list)
 {
-        int     i;
-        int     tmp;
-        int     tmp2;
-        int     save;
+	int     i;
+	int     save;
 
-        i = 1;
-        save = list-> 
-        tmp = 
-        while (i < list->lenB && list->pB[i] != save)
+	i = 0;
+	save = list->pB[0];
+        while (i < list->iB)
         {
-	
+		list->pB[i] = list->pB[i + 1];
+		i++;
         }
         list->pB[list->iB] = save;
 }

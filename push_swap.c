@@ -41,87 +41,19 @@ int	main(int argc,char **argv)
 	if (argc > 2)
 	{
 		ft_impile(argc, argv, list);
-	/*	while (i < list->len)
-                {
-                        printf("%d\n", list->pA[i]);
-                        i++;
-                }
-		i = 0;
-		write (1, "\n", 1);
-		ft_swapA(list);
-		while (i < list->len)
-                {
-                        printf("%d\n", list->pA[i]);
-                        i++;
-                }
-		i = 0;
-		write (1, "\n", 1);
-		ft_pushB(list);
-		while (i < list->len)
-                {
-                        printf("\n%d\n", list->pB[i]);
-                        i++;
-                }
-		write (1, "\n", 1);
-		i = 0;
-		  while (i < list->len)
-                {
-                        printf("%d\n", list->pA[i]);
-                        i++;
-                }
-		i = 0;
-		write (1, "\n", 1);
-		ft_swapA(list);
-		while (i < list->len)
-                {
-                        printf("%d\n", list->pA[i]);
-                        i++;
-                }
-		i = 0;
-		write (1, "\n", 1);
-		 while (i < list->len)
-                {
-                        printf("%d\n", list->pB[i]);
-                        i++;
-                }
-                write (1, "\n", 1);
-                i = 0;
-		ft_pushB(list);
-		while (i < list->len)
-                {
-                        printf("%d\n", list->pA[i]);
-                        i++;
-                }
-		i = 0;
-		write (1, "\n", 1);
-		 while (i < list->len)
-                {
-                        printf("%d\n", list->pB[i]);
-                        i++;
-                }
-                write (1, "\n", 1);
-                i = 0;
-		printf("\n\n%d\n", list->lenB);
-                //printf("%d\n", list->iB);
-		ft_pushA(list);
-		while (i < list->len)
-		{
-			printf("%d\n", list->pA[i]);
-			i++;
-		}
-		write (1, "\n", 1);*/
-
+	
 		ft_rotateA(list);
-		ft_rotateA(list);
+		ft_rev_rotateA(list);
+		//ft_rev_rotateA(list);
 		while (i < list->len)
                 {
                         printf("%d\n", list->pA[i]);
                         i++;
                 }
-		printf("\n\n%d\n", list->lenB);
-		printf("%d", list->iB);
-		 printf("\n\n%d\n", list->lenB);
-                printf("%d", list->iB);
+		//printf("\n\n%d\n", list->lenB);
+		//printf("%d", list->iB);
+		// printf("\n\n%d\n", list->lenB);
+              //  printf("%d", list->iB);
 	}
 	return (1);
 }
