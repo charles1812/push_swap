@@ -5,6 +5,7 @@ void    ft_pushA(struct list *list)
         ft_add_A(list);
 	list->lenB -= 1;
 	list->iB -= 1;
+	list->res += 1;
        // ft_reimpileB(list);
 }
 
@@ -13,6 +14,7 @@ void    ft_pushB(struct list *list)
         ft_add_B(list);
 	list->lenA -= 1;
         list->iA -= 1;
+	list->res += 1;
         //ft_reimpileA(list);
 }
 

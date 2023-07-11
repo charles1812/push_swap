@@ -14,6 +14,7 @@ void	ft_rotateA(struct list *list)
 		i--;
 	}
 	list->pA[0] = save;
+	list->res += 1;
 }
 
 void    ft_rotateB(struct list *list)
@@ -30,12 +31,14 @@ void    ft_rotateB(struct list *list)
                 i--;
         }
         list->pB[0] = save;
+	list->res += 1;
 }
 
 void	ft_rr(struct list *list)
 {
 	ft_rotateA(list);
 	ft_rotateB(list);
+	list->res += 2;
 }
 
 

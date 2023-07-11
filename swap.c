@@ -11,6 +11,7 @@ void    ft_swapA(struct list *list)
         tmp = list->pA[len];
         list->pA[len] = list->pA[len - 1];
         list->pA[len - 1] = tmp;
+	list->res += 1;
 }
 
 void    ft_swapB(struct list *list)
@@ -20,16 +21,17 @@ void    ft_swapB(struct list *list)
 
 	if (list->lenB == 1 || list->iB == 0)
                 return ;
-	printf("test");
 	len = list->lenB - 1;
         tmp = list->pB[len];
         list->pB[len] = list->pB[len - 1];
         list->pB[len - 1] = tmp;
+	list->res += 1;
 }
 
 void    ft_ss(struct list *list)
 {
         ft_swapA(list);
         ft_swapB(list);
+	list->res += 2;
 }
 

@@ -16,6 +16,7 @@ struct list
 	int	iB;
 	int	len;
 	int	display_status;
+	int	res;
 };
 
 void    ft_impile(int argc, char **argv, struct list *list);
@@ -33,6 +34,8 @@ void    ft_rotateB(struct list *list);
 void    ft_rr(struct list *list);
 void    ft_rev_rotateA(struct list *list);
 void    ft_rev_rotateB(struct list *list);
+void	ft_sorter(struct list *list);
+void	ft_sorter2(struct list *list);
 
 
 int	ft_atoi(const char *str);
