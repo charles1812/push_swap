@@ -42,19 +42,6 @@ void    ft_tre_sorter_piece(struct list *list)
         }
 }
 
-/*void    ft_tre_sorterF(struct list *list)
-{
-    if(list->lenA == 2)
-    {
-        if(list->pA[0] < list->pA[1])
-            return;
-        else
-            ft_swapA(list);
-    }
-    else
-        ft_tre_sorter_pieceF(list);
-}*/
-
 void    ft_tre_sorterF(struct list *list)
 {
         if(list->pA[0] == 3)
@@ -83,38 +70,3 @@ void    ft_tre_sorterF(struct list *list)
             }
         }
 }
-
-/*void    ft_tre_sorterB(struct list *list)
-{
-    if(list->lenB == 2)
-    {
-        if(list->pB[0] < list->pB[1])
-            return;
-        else
-            ft_swapB(list);
-    }
-    else
-        ft_tre_sorter_pieceB(list);
-}
-
-void    ft_tre_sorter_pieceB(struct list *list)
-{
-        if(list->pB[2] == 1)
-        {
-            ft_rotateB(list);
-            if (list->pA[2] != 3)
-                ft_swapB(list);
-        }
-        else if(list->pB[2] == 2)
-        {
-            if(list->pB[1] == 3)
-                ft_swapB(list);
-            if(list->pB[1] == 1)
-                ft_rev_rotateB(list);
-        }
-        else if(list->pB[2] == 3 && list->pB[1] != 2)
-        {
-            ft_rev_rotateB(list);
-            ft_swapB(list);
-        }
-}*/

@@ -98,7 +98,7 @@ void    ft_put_closeAF(struct list *list, int i, int j)
     {
         while (i > 0)
         {
-            if (list->pB[0] > list->stack)
+            if (list->pB[0] > list->lenB - 4)
             {
                 ft_pushA(list);
                 ft_rotateA(list);
@@ -106,7 +106,7 @@ void    ft_put_closeAF(struct list *list, int i, int j)
             }
             else if (i > 1)
                 ft_rotateB(list);
-            else if (i == 1)
+            else if (i != 0)
                 ft_swapB(list);
             i--; 
         }
@@ -119,23 +119,19 @@ void    ft_near_friends(struct list *list, int k)
     int     k2;
 
     k = list->iA - k;
-    k2 = k;
-    printf("k  :    %d\n\n", k);
-    while(k2 >= 0)
+    k2 = k + 1;
+    while(k2 > 0)
     {
-        //printf("k  :    %d\n\n", k);
-        //printf("k  :    %d\n\n", k);
         ft_rev_rotateA(list);
         k2--;
     }
-    //ft_pushB(list);
-    while(k2 < k - 1)
+    ft_pushB(list);
+    while(k2 < k)
     {
         ft_rotateA(list);
         k2++;
     }
-    if (list->pB[0] == list->pA[0] + 1)
-        ft_pushA(list);
+    ft_pushA(list);
     list->test -= 1;
 }
 
@@ -147,7 +143,7 @@ void    ft_find_closeAF(struct list *list)
     int     tst;
     int     tstv;
 
-    j = list->lenB;
+    j = list->iB;
     i = 0;
     k = list->iA;
     tst = list->test;
@@ -158,30 +154,26 @@ void    ft_find_closeAF(struct list *list)
         j--;
     while (list->pA[k] != list->lenB + tst && k >= tstv && tstv > 0)
         k--;
-    if (k > tstv && list->test != 0)
+    if (k >= tstv && list->test != 0)
         ft_near_friends(list, k);
     else
         ft_put_closeAF(list, i, j);
-    //ft_pushA(list);
 }
-
-
 
 void    ft_fivehundred_sorter(struct list *list)
 {
     ft_all_B(list);
     list->test = 0;
-    list->scale = 9;
-    /*
-    while(list->lenB >= 0)
+    list->scale = 15;
+    list->stack = list->len;
+    while(list->lenB + list->test > 0)
     {
-        if(list->lenB + list->test == list->stack)
+        ft_find_closeAF(list);
+        if(list->lenB + list->test  + 1 == list->stack)
         {
             list->stack -= list->scale;
             if(list->stack <= 0)
                 list->scale = 0;
         }
-        ft_find_closeAF(list);
     }
-    */
 }

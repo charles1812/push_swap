@@ -125,6 +125,6 @@ void    ft_hundred_sorter(struct list *list)
         }
     }
     while (list->lenB != 0)
-        ft_pushA(list);
-        //ft_find_closeAH(list);
+        ft_find_closeAH(list);
+        //ft_pushA(list);
 }

@@ -30,19 +30,19 @@ int		ft_alpha_check(int argc, char **argv)
 	return (1);
 }
 
-int		ft_double_check(struct list *list)
+int		ft_double_checks(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	
-	i = 0;
+	i = 1;
 	j = 0;
-	while (i < list->iA)
+	while (i <= argc)
 	{
 		j = i + 1;
-		while(list->pA[j] != '\0' && j <= list->len)
+		while(j <= argc)
 		{
-			if (list->pA[i] == list->pA[j])
+			if (argv[i] == argv[j])
 				return (0);
 			j++;
 		}
@@ -50,6 +50,7 @@ int		ft_double_check(struct list *list)
 	}
 	return (1);
 }
+
 
 int		ft_real_value(char **argv, char *argvi, int argc, struct list *list)
 {
@@ -73,24 +74,24 @@ void    ft_impile(int argc, char **argv, struct list *list)
 	int	i;
 	int	j;
 
-        i = 1;
+    i = 1;
 	j = 0;
-        list->len = argc - 1;
-        list->lenA = list->len;
-        list->lenB = 0;
+    list->len = argc - 1;
+    list->lenA = list->len;
+    list->lenB = 0;
 	list->iA = list->len - 1;
 	list->iB = -1;
-        list->pA = malloc(sizeof(int) * argc - 1);
-        list->pB = malloc(sizeof(int) * argc - 1);
-        while(i < argc)
-        {
-                list->pA[j] = ft_real_value(argv, argv[i], argc, list);
-                i++;
+    list->pA = malloc(sizeof(int) * argc - 1);
+    list->pB = malloc(sizeof(int) * argc - 1);
+    while(i < argc)
+    {
+        list->pA[j] = ft_real_value(argv, argv[i], argc, list);
+        i++;
 		j++;
-        }
+    }
 	list->pA[argc - 1] = ft_real_value(argv, argv[argc - 1], argc, list);
-        list->A = &list->pA[0];
-        list->B = &list->pB[0];
+    list->A = &list->pA[0];
+    list->B = &list->pB[0];
 }
 
 void	ft_sort(struct list *list)
@@ -109,8 +110,6 @@ void	ft_sort(struct list *list)
 int		main(int argc, char **argv)
 {
 	struct	list *list = malloc(sizeof(struct list));
-	//
-	int		i;
 
 	if (list == NULL)
 		return (0);
@@ -121,29 +120,15 @@ int		main(int argc, char **argv)
 			write(1, "error\n", 6);
 			return (0);
 		}
-		ft_impile(argc, argv, list);
-		if (ft_double_check(list) == 0)
+		if (ft_double_checks(argc, argv) == 0)
 		{
 			write(1, "error\n", 6);
 			return (0);
 		}
+		ft_impile(argc, argv, list);
 		ft_sort(list);
-		//free(list->pA);
-		//free(list->pB);
-		//ft_pushB(list);
-		//ft_rev_rotateA(list);
-		write (1, "\n", 1);
-		i = 0;
-		while(list->pA[i] && i <= list->iA)
-		{
-			printf("%d\n", list->pA[i]);
-			i++;
-		}
-		printf("\n\n\n\nmovement : %d\n\n\n", list->movement);
-		/*
-		*/
-		free(list);
+		free(list->pA);
+		free(list->pB);
 	}
 	return (1);
 }
-

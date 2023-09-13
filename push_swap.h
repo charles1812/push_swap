@@ -22,6 +22,11 @@ struct list
 	int test;
 };
 
+int		ft_is_digit(int c);
+int		ft_alpha_check(int argc, char **argv);
+int		ft_double_checks(int argc, char **argv);
+int		ft_real_value(char **argv, char *argvi, int argc, struct list *list);
+void	ft_sort(struct list *list);
 void    ft_impile(int argc, char **argv, struct list *list);
 void    ft_pushA(struct list *list);
 void    ft_pushB(struct list *list);
@@ -51,11 +56,14 @@ void	ft_find_close(struct list *list, int stack);
 void	ft_hundred_sorter(struct list *list);
 
 void	ft_fivehundred_sorter(struct list *list);
-int     ft_find_stack(struct list *list);
+void    ft_find_scale(struct list *list);
 void    ft_put_closeF(struct list *list, int j, int i);
 void    ft_find_closeF(struct list *list);
-void    ft_all_in_AF(struct list *list);
-void    ft_fivehundred_soretr(struct list *list);
+void    ft_all_B(struct list *list);
+void	ft_put_closeAF(struct list *list, int i, int j);
+void	ft_near_friends(struct list *list, int k);
+void	ft_find_closeAF(struct list *list);
+void    ft_fivehundred_sorter(struct list *list);
 
 
 int		ft_atoi(const char *str);
