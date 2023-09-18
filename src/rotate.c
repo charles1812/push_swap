@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspreafi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/18 14:30:27 by cspreafi          #+#    #+#             */
+/*   Updated: 2023/09/18 14:30:29 by cspreafi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void	ft_rotateA(struct list *list)
+void	ft_rotatea(struct list *list)
 {
 	int	i;
 	int	tmp;
@@ -17,7 +29,7 @@ void	ft_rotateA(struct list *list)
 	list->movement += 1;
 }
 
-void    ft_rotateB(struct list *list)
+void	ft_rotateB(struct list *list)
 {
         int     i;
         int     tmp;
