@@ -18,38 +18,36 @@ void	ft_rotatea(struct list *list)
 	int	tmp;
 
 	i = 0;
-	tmp = list->pA[0];
-	while (i != list->iA)
+	tmp = list->pa[0];
+	while (i != list->ia)
 	{
-		list->pA[i] = list->pA[i + 1];
+		list->pa[i] = list->pa[i + 1];
 		i++;
 	}
-	list->pA[list->iA] = tmp;
+	list->pa[list->ia] = tmp;
 	ft_putstr_fd("ra");
 	list->movement += 1;
 }
 
-void	ft_rotateB(struct list *list)
+void	ft_rotateb(struct list *list)
 {
-        int     i;
-        int     tmp;
+	int		i;
+	int		tmp;
 
-        i = 0;
-        tmp = list->pB[0];
-        while (i != list->iB)
-        {
-                list->pB[i] = list->pB[i + 1];
-                i++;
-        }
-        list->pB[list->iB] = tmp;
-		ft_putstr_fd("rb");
-		list->movement += 1;
+	i = 0;
+	tmp = list->pb[0];
+	while (i != list->ib)
+	{
+		list->pb[i] = list->pb[i + 1];
+		i++;
+	}
+	list->pb[list->ib] = tmp;
+	ft_putstr_fd("rb");
+	list->movement += 1;
 }
 
 void	ft_rr(struct list *list)
 {
-	ft_rotateA(list);
-	ft_rotateB(list);
+	ft_rotatea(list);
+	ft_rotateb(list);
 }
-
-

@@ -14,34 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_is_digit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	ft_alpha_check(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 0;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j] != '\0')
-		{
-			if (ft_is_digit(argv[i][j]) == 0)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
 int	ft_double_checks(int argc, char **argv)
 {
 	int	i;
@@ -88,21 +60,21 @@ void	ft_impile(int argc, char **argv, struct list *list)
 	i = 1;
 	j = 0;
 	list->len = argc - 1;
-	list->lenA = list->len;
-	list->lenB = 0;
-	list->iA = list->len - 1;
-	list->iB = -1;
-	list->pA = malloc(sizeof(int) * argc - 1);
-	list->pB = malloc(sizeof(int) * argc - 1);
+	list->lena = list->len;
+	list->lenb = 0;
+	list->ia = list->len - 1;
+	list->ib = -1;
+	list->pa = malloc(sizeof(int) * argc - 1);
+	list->pb = malloc(sizeof(int) * argc - 1);
 	while (i < argc)
 	{
-		list->pA[j] = ft_real_value(argv, argv[i], argc, list);
+		list->pa[j] = ft_real_value(argv, argv[i], argc, list);
 		i++;
 		j++;
 	}
-	list->pA[argc - 1] = ft_real_value(argv, argv[argc - 1], argc, list);
-	list->A = &list->pA[0];
-	list->B = &list->pB[0];
+	list->pa[argc - 1] = ft_real_value(argv, argv[argc - 1], argc, list);
+	list->a = &list->pa[0];
+	list->b = &list->pb[0];
 }
 
 void	ft_sort(struct list *list)
@@ -138,8 +110,8 @@ int	main(int argc, char **argv)
 		}
 		ft_impile(argc, argv, list);
 		ft_sort(list);
-		free(list->pA);
-		free(list->pB);
+		free(list->pa);
+		free(list->pb);
 	}
 	return (1);
 }

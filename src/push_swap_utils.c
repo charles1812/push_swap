@@ -52,3 +52,50 @@ int	ft_atoi(const char *str)
 	}
 	return (result * j);
 }
+
+void	ft_find_scale(struct list *list)
+{
+	int	i;
+	int	j;
+
+	i = 8;
+	j = 0;
+	while (i <= 12 && i < (list->len / 4))
+	{
+		if (list->len % i == 0)
+			j = i;
+		i++;
+	}
+	if (j == 0)
+		j = 12;
+	list->scale = list->len / j;
+	list->stack = list->scale;
+}
+
+int	ft_is_digit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	ft_alpha_check(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			if (ft_is_digit(argv[i][j]) == 0)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}

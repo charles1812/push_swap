@@ -1,8 +1,11 @@
 NAME = push_swap
 
 SRC =	src/fivehundred_sorter.c \
+	src/fivehundred_a.c\
+	src/fivehundred_b.c\
 	src/five_sorter.c \
 	src/hundred_sorter.c \
+	src/hundred_utils.c \
 	src/push.c \
 	src/push_swap.c \
 	src/push_swap_utils.c \

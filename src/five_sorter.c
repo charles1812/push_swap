@@ -13,16 +13,16 @@
 
 void	ft_five_sorter(struct list *list)
 {
-	while (list->lenA != 3)
+	while (list->lena != 3)
 	{
-		if (list->pA[0] >= 3)
-			ft_rotateA(list);
+		if (list->pa[0] >= 3)
+			ft_rotatea(list);
 		else
-			ft_pushB(list);
+			ft_pushb(list);
 	}
-	ft_tre_sorterF(list);
-	if (list->pB[0] < list->pB[1])
-		ft_swapB(list);
-	while (list->lenB != 0)
-		ft_pushA(list);
+	ft_tre_sorterf(list);
+	if (list->pb[0] < list->pb[1])
+		ft_swapb(list);
+	while (list->lenb != 0)
+		ft_pusha(list);
 }
