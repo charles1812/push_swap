@@ -12,20 +12,20 @@
 
 #include "../push_swap.h"
 
-void	ft_fivehundred_sorter(struct list *list)
+void	ft_fivehundred_sorter(struct s_list *s_list)
 {
-	ft_all_b(list);
-	list->test = 0;
-	list->scale = 15;
-	list->stack = list->len;
-	while (list->lenb + list->test > 0)
+	ft_all_b(s_list);
+	s_list->test = 0;
+	s_list->scale = 15;
+	s_list->stack = s_list->len;
+	while (s_list->lenb + s_list->test > 0)
 	{
-		ft_find_closeaf(list);
-		if (list->lenb + list->test + 1 == list->stack)
+		ft_find_closeaf(s_list);
+		if (s_list->lenb + s_list->test + 1 == s_list->stack)
 		{
-			list->stack -= list->scale;
-			if (list->stack <= 0)
-				list->scale = 0;
+			s_list->stack -= s_list->scale;
+			if (s_list->stack <= 0)
+				s_list->scale = 0;
 		}
 	}
 }

@@ -13,6 +13,8 @@ SRC =	src/fivehundred_sorter.c \
 	src/rotate.c \
 	src/swap.c \
 	src/tre_sorter.c \
+	src/ft_split.c \
+	src/impile.c \
 
 OBJ = ${SRC:.c=.o}
 

@@ -12,42 +12,42 @@
 
 #include "../push_swap.h"
 
-void	ft_rotatea(struct list *list)
+void	ft_rotatea(struct s_list *s_list)
 {
 	int	i;
 	int	tmp;
 
 	i = 0;
-	tmp = list->pa[0];
-	while (i != list->ia)
+	tmp = s_list->pa[0];
+	while (i != s_list->ia)
 	{
-		list->pa[i] = list->pa[i + 1];
+		s_list->pa[i] = s_list->pa[i + 1];
 		i++;
 	}
-	list->pa[list->ia] = tmp;
+	s_list->pa[s_list->ia] = tmp;
 	ft_putstr_fd("ra");
-	list->movement += 1;
+	s_list->movement += 1;
 }
 
-void	ft_rotateb(struct list *list)
+void	ft_rotateb(struct s_list *s_list)
 {
 	int		i;
 	int		tmp;
 
 	i = 0;
-	tmp = list->pb[0];
-	while (i != list->ib)
+	tmp = s_list->pb[0];
+	while (i != s_list->ib)
 	{
-		list->pb[i] = list->pb[i + 1];
+		s_list->pb[i] = s_list->pb[i + 1];
 		i++;
 	}
-	list->pb[list->ib] = tmp;
+	s_list->pb[s_list->ib] = tmp;
 	ft_putstr_fd("rb");
-	list->movement += 1;
+	s_list->movement += 1;
 }
 
-void	ft_rr(struct list *list)
+void	ft_rr(struct s_list *s_list)
 {
-	ft_rotatea(list);
-	ft_rotateb(list);
+	ft_rotatea(s_list);
+	ft_rotateb(s_list);
 }

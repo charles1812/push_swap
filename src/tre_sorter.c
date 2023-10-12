@@ -12,73 +12,102 @@
 
 #include "../push_swap.h"
 
-void	ft_tre_sorter(struct list *list)
+void	ft_tre_sorter(struct s_list *s_list)
 {
-	if (list->lena == 2)
+	if (s_list->lena == 2)
 	{
-		if (list->pa[0] < list->pa[1])
+		if (s_list->pa[0] < s_list->pa[1])
 			return ;
 		else
-			ft_swapa(list);
+			ft_swapa(s_list);
 	}
 	else
-		ft_tre_sorter_piece(list);
+		ft_tre_sorter_piece(s_list);
 }
 
-void	ft_tre_sorter_piece(struct list *list)
+void	ft_tre_sorter_piece(struct s_list *s_list)
 {
-	if (list->pa[0] == 1)
+	if (s_list->pa[0] == 1)
 	{
-		if (list->pa[1] == 3)
+		if (s_list->pa[1] == 3)
 		{
-			ft_swapa(list);
-			ft_rotatea(list);
+			ft_swapa(s_list);
+			ft_rotatea(s_list);
 		}
 	}
-	else if (list->pa[0] == 2)
+	else if (s_list->pa[0] == 2)
 	{
-		if (list->pa[1] == 1)
-			ft_swapa(list);
-		if (list->pa[1] == 3)
-			ft_rev_rotatea(list);
+		if (s_list->pa[1] == 1)
+			ft_swapa(s_list);
+		if (s_list->pa[1] == 3)
+			ft_rev_rotatea(s_list);
 	}
-	else if (list->pa[0] == 3)
+	else if (s_list->pa[0] == 3)
 	{
-		if (list->pa[1] == 1)
-			ft_rotatea(list);
+		if (s_list->pa[1] == 1)
+			ft_rotatea(s_list);
 		else
 		{
-			ft_rotatea(list);
-			ft_swapa(list);
+			ft_rotatea(s_list);
+			ft_swapa(s_list);
 		}
 	}
 }
 
-void	ft_tre_sorterf(struct list *list)
+void	ft_tre_sorterf(struct s_list *s_list)
 {
-	if (list->pa[0] == 3)
+	if (s_list->pa[0] == 3)
 	{
-		if (list->pa[1] == 5)
+		if (s_list->pa[1] == 5)
 		{
-			ft_swapa(list);
-			ft_rotatea(list);
+			ft_swapa(s_list);
+			ft_rotatea(s_list);
 		}
 	}
-	else if (list->pa[0] == 4)
+	else if (s_list->pa[0] == 4)
 	{
-		if (list->pa[1] == 3)
-			ft_swapa(list);
-		if (list->pa[1] == 5)
-			ft_rev_rotatea(list);
+		if (s_list->pa[1] == 3)
+			ft_swapa(s_list);
+		else if (s_list->pa[1] == 5)
+			ft_rev_rotatea(s_list);
 	}
-	else if (list->pa[0] == 5)
+	else if (s_list->pa[0] == 5)
 	{
-		if (list->pa[1] == 3)
-			ft_rotatea(list);
+		if (s_list->pa[1] == 3)
+			ft_rotatea(s_list);
 		else
 		{
-			ft_rotatea(list);
-			ft_swapa(list);
+			ft_rotatea(s_list);
+			ft_swapa(s_list);
+		}
+	}
+}
+
+void	ft_tre_sorterf2(struct s_list *s_list)
+{
+	if (s_list->pa[0] == 2)
+	{
+		if (s_list->pa[1] == 4)
+		{
+			ft_swapa(s_list);
+			ft_rotatea(s_list);
+		}
+	}
+	else if (s_list->pa[0] == 3)
+	{
+		if (s_list->pa[1] == 2)
+			ft_swapa(s_list);
+		else if (s_list->pa[1] == 4)
+			ft_rev_rotatea(s_list);
+	}
+	else if (s_list->pa[0] == 4)
+	{
+		if (s_list->pa[1] == 2)
+			ft_rotatea(s_list);
+		else
+		{
+			ft_rotatea(s_list);
+			ft_swapa(s_list);
 		}
 	}
 }

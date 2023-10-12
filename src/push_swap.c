@@ -26,7 +26,7 @@ int	ft_double_checks(int argc, char **argv)
 		j = i + 1;
 		while (j <= argc)
 		{
-			if (argv[i] == argv[j])
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (0);
 			j++;
 		}
@@ -35,49 +35,30 @@ int	ft_double_checks(int argc, char **argv)
 	return (1);
 }
 
-int	ft_real_value(char **argv, char *argvi, int argc, struct list *list)
-{
-	int	j;
-	int	res;
-
-	j = 0;
-	res = 0;
-	while (j < argc)
-	{
-		if (ft_atoi(argvi) < ft_atoi(argv[j]))
-			res++;
-		j++;
-	}
-	res = list->len - res;
-	return (res);
-}
-
-void	ft_impile(int argc, char **argv, struct list *list)
+int	ft_double_checks2(int argc, char **argv)
 {
 	int	i;
 	int	j;
+	int	res;
 
-	i = 1;
+	i = 0;
 	j = 0;
-	list->len = argc - 1;
-	list->lena = list->len;
-	list->lenb = 0;
-	list->ia = list->len - 1;
-	list->ib = -1;
-	list->pa = malloc(sizeof(int) * argc - 1);
-	list->pb = malloc(sizeof(int) * argc - 1);
-	while (i < argc)
+	res = 1;
+	while (i != argc)
 	{
-		list->pa[j] = ft_real_value(argv, argv[i], argc, list);
+		j = i + 1;
+		while (j != argc)
+		{
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+				return (0);
+			j++;
+		}
 		i++;
-		j++;
 	}
-	list->pa[argc - 1] = ft_real_value(argv, argv[argc - 1], argc, list);
-	list->a = &list->pa[0];
-	list->b = &list->pb[0];
+	return (1);
 }
 
-void	ft_sort(struct list *list)
+void	ft_sort(struct s_list *list)
 {
 	if (list->len <= 3)
 		ft_tre_sorter(list);
@@ -89,14 +70,51 @@ void	ft_sort(struct list *list)
 		ft_fivehundred_sorter(list);
 }
 
+int	ft_count_num(char **argv)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	res = 1;
+	while (argv[1][i])
+	{
+		if (argv[1][i] == ' ')
+			res = res + 1;
+		i++;
+	}
+	return (res);
+}
+
 int	main(int argc, char **argv)
 {
-	struct list	*list;
+	struct s_list	*s_list;
+	int				i;
 
-	list = malloc(sizeof(struct list));
-	if (list == NULL)
+	i = 0;
+	s_list = malloc(sizeof(struct s_list));
+	if (s_list == NULL)
 		return (0);
-	if (argc > 2)
+	if (argc == 2)
+	{
+		if (ft_count_num(argv) > 1)
+		{
+			s_list->fkargv = ft_split(argv[1], ' ');
+			argc = ft_count_num(argv);
+			ft_impile2(argc, s_list->fkargv, s_list);
+			if (ft_double_checks2(argc, s_list->fkargv) == 0)
+			{
+				write(1, "error\n", 6);
+				return (0);
+			}
+			ft_sort(s_list);
+			free(s_list->pa);
+			free(s_list->pb);
+		}
+		else
+			return (1);
+	}
+	else if (argc > 2)
 	{
 		if (ft_alpha_check(argc, argv) == 0)
 		{
@@ -108,10 +126,10 @@ int	main(int argc, char **argv)
 			write(1, "error\n", 6);
 			return (0);
 		}
-		ft_impile(argc, argv, list);
-		ft_sort(list);
-		free(list->pa);
-		free(list->pb);
+		ft_impile(argc, argv, s_list);
+		ft_sort(s_list);
+		free(s_list->pa);
+		free(s_list->pb);
 	}
 	return (1);
 }

@@ -12,21 +12,21 @@
 
 #include "../push_swap.h"
 
-void	ft_find_scaleh(struct list *list)
+void	ft_find_scaleh(struct s_list *s_list)
 {
 	int	i;
 	int	j;
 
 	i = 2;
 	j = 0;
-	while (i <= 10 && i < (list->len / 4))
+	while (i <= 10 && i < (s_list->len / 4))
 	{
-		if (list->len % i == 0)
+		if (s_list->len % i == 0)
 			j = i;
 		i++;
 	}
 	if (j == 0)
 		j = 6;
-	list->scale = list->len / j;
-	list->stack = list->scale;
+	s_list->scale = s_list->len / j;
+	s_list->stack = s_list->scale;
 }

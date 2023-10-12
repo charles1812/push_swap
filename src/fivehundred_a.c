@@ -12,14 +12,14 @@
 
 #include "../push_swap.h"
 
-void	ft_put_closeaf(struct list *list, int i, int j)
+void	ft_put_closeaf(struct s_list *s_list, int i, int j)
 {
-	j = list->lenb - j;
+	j = s_list->lenb - j;
 	if ((i + 1) > j)
 	{
 		while (j > 0)
 		{
-			ft_rev_rotateb(list);
+			ft_rev_rotateb(s_list);
 			j--;
 		}
 	}
@@ -27,21 +27,21 @@ void	ft_put_closeaf(struct list *list, int i, int j)
 	{
 		while (i > 0)
 		{
-			if (list->pb[0] > list->lenb - 4)
+			if (s_list->pb[0] > s_list->lenb - 4)
 			{
-				ft_pusha(list);
-				ft_rotatea(list);
-				list->test += 1;
+				ft_pusha(s_list);
+				ft_rotatea(s_list);
+				s_list->test += 1;
 			}
 			else
-				ft_rotateb(list);
+				ft_rotateb(s_list);
 			i--;
 		}
 	}
-	ft_pusha(list);
+	ft_pusha(s_list);
 }
 
-void	ft_near_friends(struct list *list, int k)
+void	ft_near_friends(struct s_list *list, int k)
 {
 	int	k2;
 
@@ -62,7 +62,7 @@ void	ft_near_friends(struct list *list, int k)
 	list->test -= 1;
 }
 
-void	ft_find_closeaf(struct list *list)
+void	ft_find_closeaf(struct s_list *list)
 {
 	int	i;
 	int	j;

@@ -12,14 +12,14 @@
 
 #include "../push_swap.h"
 
-void	ft_put_closef(struct list *list, int j, int i)
+void	ft_put_closef(struct s_list *s_list, int j, int i)
 {
-	j = list->lena - j;
+	j = s_list->lena - j;
 	if (i + 1 > j)
 	{
 		while (j > 0)
 		{
-			ft_rev_rotatea(list);
+			ft_rev_rotatea(s_list);
 			j--;
 		}
 	}
@@ -28,48 +28,48 @@ void	ft_put_closef(struct list *list, int j, int i)
 		while (i != 0)
 		{
 			if (i > 1)
-				ft_rotatea(list);
+				ft_rotatea(s_list);
 			else
-				ft_swapa(list);
+				ft_swapa(s_list);
 			i--;
 		}
 	}
-	ft_pushb(list);
+	ft_pushb(s_list);
 }
 
-void	ft_find_closef(struct list *list)
+void	ft_find_closef(struct s_list *s_list)
 {
 	int	i;
 	int	j;
 
-	j = list->ia;
+	j = s_list->ia;
 	i = 0;
-	while (list->pa[j] > list->stack)
+	while (s_list->pa[j] > s_list->stack)
 		j--;
-	while (list->pa[i] > list->stack)
+	while (s_list->pa[i] > s_list->stack)
 		i++;
-	ft_put_closef(list, j, i);
+	ft_put_closef(s_list, j, i);
 }
 
-void	ft_all_b(struct list *list)
+void	ft_all_b(struct s_list *s_list)
 {
 	int	sorted;
 	int	secur;
 
 	secur = 0;
 	sorted = 0;
-	ft_find_scale(list);
+	ft_find_scale(s_list);
 	while (secur != 2)
 	{
-		while (sorted + 1 <= list->stack)
+		while (sorted + 1 <= s_list->stack)
 		{
-			ft_find_closef(list);
+			ft_find_closef(s_list);
 			sorted++;
 		}
-		list->stack += list->scale;
-		if (list->stack >= list->len)
+		s_list->stack += s_list->scale;
+		if (s_list->stack >= s_list->len)
 		{
-			list->stack = list->len;
+			s_list->stack = s_list->len;
 			secur++;
 		}
 	}

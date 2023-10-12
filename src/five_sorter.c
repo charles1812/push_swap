@@ -11,18 +11,30 @@
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-void	ft_five_sorter(struct list *list)
+void	ft_five_sorter(struct s_list *s_list)
 {
-	while (list->lena != 3)
+	if (s_list->lena == 4)
 	{
-		if (list->pa[0] >= 3)
-			ft_rotatea(list);
-		else
-			ft_pushb(list);
+		while (s_list->lena != 3)
+		{
+			if (s_list->pa[0] != 1)
+				ft_rotatea(s_list);
+			else
+				ft_pushb(s_list);
+		}
+		ft_tre_sorterf2(s_list);
 	}
-	ft_tre_sorterf(list);
-	if (list->pb[0] < list->pb[1])
-		ft_swapb(list);
-	while (list->lenb != 0)
-		ft_pusha(list);
+	else
+	{
+		while (s_list->lena != 3)
+		{
+			if (s_list->pa[0] >= 3)
+				ft_rotatea(s_list);
+			else
+				ft_pushb(s_list);
+		}
+		ft_tre_sorterf(s_list);
+	}
+	while (s_list->lenb != 0)
+		ft_pusha(s_list);
 }

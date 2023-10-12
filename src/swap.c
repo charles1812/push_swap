@@ -12,34 +12,34 @@
 
 #include "../push_swap.h"
 
-void	ft_swapa(struct list *list)
+void	ft_swapa(struct s_list *s_list)
 {
 	int	tmp;
 
-	if (list->lena == 1 || list->ia == 0)
+	if (s_list->lena == 1 || s_list->ia == 0)
 		return ;
-	tmp = list->pa[0];
-	list->pa[0] = list->pa[1];
-	list->pa[1] = tmp;
+	tmp = s_list->pa[0];
+	s_list->pa[0] = s_list->pa[1];
+	s_list->pa[1] = tmp;
 	ft_putstr_fd("sa");
-	list->movement += 1;
+	s_list->movement += 1;
 }
 
-void	ft_swapb(struct list *list)
+void	ft_swapb(struct s_list *s_list)
 {
 	int	tmp;
 
-	if (list->lenb == 1 || list->ib == 0)
+	if (s_list->lenb == 1 || s_list->ib == 0)
 		return ;
-	tmp = list->pb[0];
-	list->pb[0] = list->pb[1];
-	list->pb[1] = tmp;
+	tmp = s_list->pb[0];
+	s_list->pb[0] = s_list->pb[1];
+	s_list->pb[1] = tmp;
 	ft_putstr_fd("sb");
-	list->movement += 1;
+	s_list->movement += 1;
 }
 
-void	ft_ss(struct list *list)
+void	ft_ss(struct s_list *s_list)
 {
-	ft_swapa(list);
-	ft_swapb(list);
+	ft_swapa(s_list);
+	ft_swapb(s_list);
 }

@@ -14,14 +14,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	ft_put_closeh(struct list *list, int j, int i)
+void	ft_put_closeh(struct s_list *s_list, int j, int i)
 {
-	j = list->lena - j;
+	j = s_list->lena - j;
 	if (i + 1 > j)
 	{
 		while (j > 0)
 		{
-			ft_rev_rotatea(list);
+			ft_rev_rotatea(s_list);
 			j--;
 		}
 	}
@@ -30,37 +30,37 @@ void	ft_put_closeh(struct list *list, int j, int i)
 		while (i != 0)
 		{
 			if (i > 1)
-				ft_rotatea(list);
+				ft_rotatea(s_list);
 			else
-				ft_swapa(list);
+				ft_swapa(s_list);
 			i--;
 		}
 	}
-	ft_pushb(list);
+	ft_pushb(s_list);
 }
 
-void	ft_find_closeh(struct list *list)
+void	ft_find_closeh(struct s_list *s_list)
 {
 	int	i;
 	int	j;
 
-	j = list->ia;
+	j = s_list->ia;
 	i = 0;
-	while (list->pa[j] > list->stack)
+	while (s_list->pa[j] > s_list->stack)
 		j--;
-	while (list->pa[i] > list->stack)
+	while (s_list->pa[i] > s_list->stack)
 		i++;
-	ft_put_closeh(list, j, i);
+	ft_put_closeh(s_list, j, i);
 }
 
-void	ft_put_closeah(struct list *list, int i, int j)
+void	ft_put_closeah(struct s_list *s_list, int i, int j)
 {
-	j = list->lenb - j;
+	j = s_list->lenb - j;
 	if ((i + 1) > j)
 	{
 		while (j > 0)
 		{
-			ft_rev_rotateb(list);
+			ft_rev_rotateb(s_list);
 			j--;
 		}
 	}
@@ -69,51 +69,51 @@ void	ft_put_closeah(struct list *list, int i, int j)
 		while (i > 0)
 		{
 			if (i > 1)
-				ft_rotateb(list);
+				ft_rotateb(s_list);
 			else
-				ft_swapb(list);
+				ft_swapb(s_list);
 			i--;
 		}
 	}
-	ft_pusha(list);
+	ft_pusha(s_list);
 }
 
-void	ft_find_closeah(struct list *list)
+void	ft_find_closeah(struct s_list *s_list)
 {
 	int	i;
 	int	j;
 
-	j = list->ib;
+	j = s_list->ib;
 	i = 0;
-	while (list->pb[i] != list->lenb)
+	while (s_list->pb[i] != s_list->lenb)
 		i++;
-	while (list->pb[j] != list->lenb)
+	while (s_list->pb[j] != s_list->lenb)
 		j--;
-	ft_put_closeah(list, i, j);
+	ft_put_closeah(s_list, i, j);
 }
 
-void	ft_hundred_sorter(struct list *list)
+void	ft_hundred_sorter(struct s_list *s_list)
 {
 	int	sorted;
 	int	secur;
 
 	secur = 0;
 	sorted = 0;
-	ft_find_scaleh(list);
+	ft_find_scaleh(s_list);
 	while (secur != 2)
 	{
-		while (sorted + 1 <= list->stack)
+		while (sorted + 1 <= s_list->stack)
 		{
-			ft_find_closeh(list);
+			ft_find_closeh(s_list);
 			sorted++;
 		}
-		list->stack += list->scale;
-		if (list->stack >= list->len)
+		s_list->stack += s_list->scale;
+		if (s_list->stack >= s_list->len)
 		{
-			list->stack = list->len;
+			s_list->stack = s_list->len;
 			secur++;
 		}
 	}
-	while (list->lenb != 0)
-		ft_find_closeah(list);
+	while (s_list->lenb != 0)
+		ft_find_closeah(s_list);
 }
