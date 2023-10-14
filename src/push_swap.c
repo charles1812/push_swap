@@ -14,62 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_double_checks(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 0;
-	while (i <= argc)
-	{
-		j = i + 1;
-		while (j <= argc)
-		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	ft_double_checks2(int argc, char **argv)
-{
-	int	i;
-	int	j;
-	int	res;
-
-	i = 0;
-	j = 0;
-	res = 1;
-	while (i != argc)
-	{
-		j = i + 1;
-		while (j != argc)
-		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-void	ft_sort(struct s_list *list)
-{
-	if (list->len <= 3)
-		ft_tre_sorter(list);
-	else if (list->len <= 5)
-		ft_five_sorter(list);
-	else if (list->len <= 100)
-		ft_hundred_sorter(list);
-	else if (list->len > 100)
-		ft_fivehundred_sorter(list);
-}
-
 int	ft_count_num(char **argv)
 {
 	int	i;
@@ -86,50 +30,71 @@ int	ft_count_num(char **argv)
 	return (res);
 }
 
+void	ft_multiarg(int argc, char **argv, struct s_list *s_list)
+{
+	if (ft_alpha_check(argc, argv) == 0)
+	{
+		write(1, "Error\n", 6);
+		return ;
+	}
+	if (ft_double_checks(argc, argv) == 0)
+	{
+		write(1, "Error\n", 6);
+		return ;
+	}
+	ft_impile(argc, argv, s_list);
+	ft_sort(s_list);
+}
+
+void	ft_onlyarg(int argc, char **argv, struct s_list *s_list)
+{
+	s_list->fkargv = ft_split(argv[1], ' ');
+	argc = ft_count_num(argv);
+	if (ft_alpha_check2(argc, s_list->fkargv) == 0)
+	{
+		write(1, "Error\n", 6);
+		return ;
+	}
+	if (ft_double_checks2(argc, s_list->fkargv) == 0)
+	{
+		write(1, "Error\n", 6);
+		return ;
+	}
+	ft_impile2(argc, s_list->fkargv, s_list);
+	ft_sort(s_list);
+}
+
+void	ft_sort(struct s_list *list)
+{
+	if (list->len <= 3)
+		ft_tre_sorter(list);
+	else if (list->len <= 5)
+		ft_five_sorter(list);
+	else if (list->len <= 100)
+		ft_hundred_sorter(list);
+	else if (list->len > 100)
+		ft_fivehundred_sorter(list);
+}
+
 int	main(int argc, char **argv)
 {
 	struct s_list	*s_list;
-	int				i;
 
-	i = 0;
 	s_list = malloc(sizeof(struct s_list));
 	if (s_list == NULL)
 		return (0);
 	if (argc == 2)
 	{
 		if (ft_count_num(argv) > 1)
-		{
-			s_list->fkargv = ft_split(argv[1], ' ');
-			argc = ft_count_num(argv);
-			ft_impile2(argc, s_list->fkargv, s_list);
-			if (ft_double_checks2(argc, s_list->fkargv) == 0)
-			{
-				write(1, "error\n", 6);
-				return (0);
-			}
-			ft_sort(s_list);
-			free(s_list->pa);
-			free(s_list->pb);
-		}
-		else
-			return (1);
+			ft_onlyarg(argc, argv, s_list);
 	}
 	else if (argc > 2)
+		ft_multiarg(argc, argv, s_list);
+	if (s_list->pa[0] != '\0')
 	{
-		if (ft_alpha_check(argc, argv) == 0)
-		{
-			write(1, "error\n", 6);
-			return (0);
-		}
-		if (ft_double_checks(argc, argv) == 0)
-		{
-			write(1, "error\n", 6);
-			return (0);
-		}
-		ft_impile(argc, argv, s_list);
-		ft_sort(s_list);
 		free(s_list->pa);
 		free(s_list->pb);
 	}
+	free(s_list);
 	return (1);
 }

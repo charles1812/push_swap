@@ -15,6 +15,7 @@ SRC =	src/fivehundred_sorter.c \
 	src/tre_sorter.c \
 	src/ft_split.c \
 	src/impile.c \
+	src/doublechecks.c \
 
 OBJ = ${SRC:.c=.o}
 

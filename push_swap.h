@@ -40,6 +40,7 @@ char		**ft_split(const char *str, char c);
 
 int			ft_is_digit(int c);
 int			ft_alpha_check(int argc, char **argv);
+int			ft_alpha_check2(int argc, char **argv);
 int			ft_double_checks(int argc, char **argv);
 void		ft_sort(struct s_list *list);
 int			ft_real_value(char **argv, char *argvi, int argc,
@@ -60,6 +61,8 @@ void		ft_rotateb(struct s_list *list);
 void		ft_rr(struct s_list *list);
 void		ft_rev_rotatea(struct s_list *list);
 void		ft_rev_rotateb(struct s_list *list);
+int			ft_double_checks(int argc, char **argv);
+int			ft_double_checks2(int argc, char **argv);
 
 void		ft_sort(struct s_list *list);
 
