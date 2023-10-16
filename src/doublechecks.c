@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int ft_double_checks(int argc, char **argv)
+int	ft_double_checks(int argc, char **argv)
 {
 	int	i;
 	int	j;

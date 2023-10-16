@@ -94,7 +94,6 @@ char	**ft_piece_2(char **dst, int *lw, const char *str, char c)
 			j++;
 		}
 	}
-	dst[j] = 0;
 	return (dst);
 }
 
@@ -106,7 +105,7 @@ char	**ft_split(const char *str, char c)
 
 	word = ft_count_wrd(str, c);
 	lw = ft_count_len_wrd(str, c);
-	dst = (char **)malloc(sizeof(char *) * (word + 1));
+	dst = (char **)malloc(sizeof(char *) * (word));
 	if (!dst)
 		return (0);
 	ft_piece_2(dst, lw, str, c);

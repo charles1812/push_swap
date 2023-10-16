@@ -23,7 +23,7 @@ int	ft_count_num(char **argv)
 	res = 1;
 	while (argv[1][i])
 	{
-		if (argv[1][i] == ' ')
+		if (argv[1][i] != ' ' && argv[1][i - 1] == ' ')
 			res = res + 1;
 		i++;
 	}
