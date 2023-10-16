@@ -90,11 +90,8 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		ft_multiarg(argc, argv, s_list);
-	if (s_list->pa[0] != '\0')
-	{
-		free(s_list->pa);
-		free(s_list->pb);
-	}
+	free(s_list->pa);
+	free(s_list->pb);
 	free(s_list);
 	return (1);
 }
