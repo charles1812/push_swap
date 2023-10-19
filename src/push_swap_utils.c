@@ -44,9 +44,9 @@ void	ft_find_scale(struct s_list *s_list)
 	s_list->stack = s_list->scale;
 }
 
-int	ft_is_digit(int c)
+int	ft_is_digit(int c, int c2)
 {
-	if (c >= '0' && c <= '9')
+	if ((c >= '0' && c <= '9') || (c == '-' && c2 >= '0' && c2 <= '9'))
 		return (1);
 	return (0);
 }
@@ -63,7 +63,7 @@ int	ft_alpha_check(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (ft_is_digit(argv[i][j]) == 0)
+			if (ft_is_digit(argv[i][j], argv[i][j + 1]) == 0)
 				return (0);
 			j++;
 		}
@@ -84,7 +84,7 @@ int	ft_alpha_check2(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (ft_is_digit(argv[i][j]) == 0)
+			if (ft_is_digit(argv[i][j], argv[i][j + 1]) == 0)
 				return (0);
 			j++;
 		}

@@ -38,7 +38,7 @@ struct		s_list
 
 char		**ft_split(const char *str, char c);
 
-int			ft_is_digit(int c);
+int			ft_is_digit(int c, int c2);
 int			ft_alpha_check(int argc, char **argv);
 int			ft_alpha_check2(int argc, char **argv);
 int			ft_double_checks(int argc, char **argv);
